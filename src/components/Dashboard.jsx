@@ -1,8 +1,16 @@
 import React from 'react'
 import Tile from './Tile'
+import { Button, Table } from 'react-bootstrap'
 
-function Dashboard() {
-    let data = [
+function Dashboard({data,setData}) {
+    
+    
+   let handleSubmit=(index)=>{
+    let newArray=[...data]
+    newArray.splice(index,1)
+        setData(newArray)
+    }
+    let dashboardData = [
         {
             color:'primary',
             title:'Earnings (Monthly)',
@@ -48,7 +56,7 @@ function Dashboard() {
 
    <div className="row">
         {
-            data.map((e,i)=>{
+          dashboardData.map((e,i)=>{
                 return <Tile color={e.color}
                              title={e.title}
                              icon={e.icon}
@@ -58,6 +66,42 @@ function Dashboard() {
             })
         }
 
+</div>
+<div className="row">
+    <Table striped bordered hover>
+    <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>UserName</th>
+          <th>Email</th>
+          <th>Mobile</th>
+          <th>Batch</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+      {
+        data.map((e,i)=>{
+            return   <tr key={i}>
+            <td>{i+1}</td>
+            <td>{e.name}</td>
+            <td>{e.username}</td>
+            <td>{e.email}</td>
+            <td>{e.mobile}</td>
+            <td>{e.batch}</td>
+            <td>
+                <Button variant='primary' >Edit</Button>
+                &nbsp;&nbsp;
+                <Button variant='danger' onClick={()=>handleSubmit(i)}>Delete</Button>
+            </td>
+          </tr>
+        })
+      }
+        
+      </tbody>
+
+    </Table>
 </div>
 </div>
   

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function Sidebar() {
   return <>
@@ -16,10 +17,10 @@ function Sidebar() {
 <hr className="sidebar-divider my-0"/>
 
 {/* <!-- Nav Item - Dashboard --> */}
-<li className="nav-item active">
-    <a className="nav-link" href="index.html">
+<li className="nav-item active" >
+    <div className="nav-link" style={{color:'white'}}>
         <i className="fas fa-fw fa-tachometer-alt"></i>
-        <span>Dashboard</span></a>
+        <Link to={'/dashboard'} style={{color:'white',textDecoration:'none'}}> Dashboard</Link></div>
 </li>
 
 {/* <!-- Divider --> */}
@@ -32,21 +33,19 @@ function Sidebar() {
 
 {/* <!-- Nav Item - Pages Collapse Menu --> */}
 <li className="nav-item">
-    <a className="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-        aria-expanded="true" aria-controls="collapseTwo">
+    <div className="nav-link " >
         <i className="fas fa-fw fa-cog"></i>
-        <span>Components</span>
-    </a>
+        <Link to={'/create'} style={{color:'white',textDecoration:'none'}}>Add User</Link>
+    </div>
    
 </li>
 
 {/* <!-- Nav Item - Utilities Collapse Menu --> */}
 <li className="nav-item">
-    <a className="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-        aria-expanded="true" aria-controls="collapseUtilities">
+    <div className="nav-link " >
         <i className="fas fa-fw fa-wrench"></i>
-        <span>Utilities</span>
-    </a>
+        <Link to={'/*'} style={{color:'white',textDecoration:'none'}}>View User</Link>
+    </div>
    
 </li>
 
