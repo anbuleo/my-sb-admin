@@ -1,9 +1,10 @@
 import React from 'react'
 import Tile from './Tile'
 import { Button, Table } from 'react-bootstrap'
+import { useNavigate } from 'react-router-dom'
 
 function Dashboard({data,setData}) {
-    
+    let navigate = useNavigate()
     
    let handleSubmit=(index)=>{
     let newArray=[...data]
@@ -91,7 +92,9 @@ function Dashboard({data,setData}) {
             <td>{e.mobile}</td>
             <td>{e.batch}</td>
             <td>
-                <Button variant='primary' >Edit</Button>
+                <Button variant='primary' onClick={()=>{
+                  navigate(`/edit/${i}`)
+                }} >Edit</Button>
                 &nbsp;&nbsp;
                 <Button variant='danger' onClick={()=>handleSubmit(i)}>Delete</Button>
             </td>
